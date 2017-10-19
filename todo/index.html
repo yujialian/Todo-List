@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Todo App</title>
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<div class="container"><!--Start of the main container-->
+    <h1>My Todo List</h1>
+    <form class="add-task">
+        <input name="content"
+               type="text"
+               placeholder="e.g. Don't forget the cannolis!"
+               autofocus
+               autocomplete="off"
+        >
+        <button type="submit">Submit</button>
+    </form>
+    <div class="task-list">
+    </div><!--End of tesk list-->
+    <div class="task-detail-mask">
+    </div>
+    <div class="task-detail"><!--Start of task detail -->
+        <div class="content"><!-- Task name -->
+            e.g. Don't forget the cannolis!
+        </div><!-- End of task name -->
+        <div><!-- Start of task description -->
+            <div class="desc">
+                <textarea id=""></textarea>
+            </div>
+        </div><!-- End of task description -->
+        <div class="remind"><!-- Task time remainder -->
+            <input type="date">
+            <!--<button type="submit">Submit</button>-->
+        </div><!-- End of task time remainder -->
+    </div><!-- End of task detail -->
+
+</div><!--End of the main container-->
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/store/store.js"></script>
+<script src="js/base.js"></script>
+</body>
+</html>
