@@ -4,8 +4,8 @@
 ;(function () {
     'use strict';
     var $form_add_task = $('.add-task')
-        , $delete_task
-        ,$detail_task
+        , $task_delete
+        , $task_detail
         , new_task = {}
         , $task_detail = $('.task-detail')
         , $task_detail_mask = $('.task-detail-mask')
@@ -34,7 +34,8 @@
     /*Looking and listening all the delete button events.*/
     function listen_task_delete()
     {
-        $delete_task.on('click', function () {
+        console.log('$task_delete', $task_delete);
+        $task_delete.on('click', function () {
             var $this = $(this);
             /*Find which event's delete button is been pushed*/
             var $item = $this.parent().parent();
@@ -45,6 +46,15 @@
         })
     }
 
+    function listen_task_detail() {
+        //console.log('$task_detail', $task_detail)
+        $task_detail.on('click', function () {
+            var $this = $(this);
+            var $item = $this.parent().parent();
+            var index = $item.data('index');
+            console.log('index', index);
+        })
+    }
     /*Delete one task*/
     function delete_task(index) {
         /*if no index or index does not exist, return directly*/
@@ -82,9 +92,11 @@
             var $task = render_task_item(task_list[i], i);
             $task_list.append($task);
         }
-        $delete_task = $('.action.delete');
-        $detail_task = $('.action.detail');
+        $task_delete = $('.action.delete');
+        $task_detail = $('.action.detail');
         listen_task_delete();
+        listen_task_detail();
+        //console.log('1', 1);
     }
 
     function listen_task_detail()
@@ -92,7 +104,7 @@
         $task_detail.on('click',function() {
             var $this = $(this);
             $this.parent().parent();
-            
+
         })
     }
     /*Render single task templates.*/
