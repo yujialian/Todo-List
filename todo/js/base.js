@@ -103,6 +103,7 @@
             var $item = $this.parent().parent();
             var index = $item.data('index');
             //console.log('index', index);
+            render_task_detail(index)
             show_task_detail(index)
         })
     }
@@ -116,20 +117,26 @@
 
     /*render specific task's detail information.*/
     function render_task_detail(index) {
-        var tpl =         <div>
-        <div class="content"><!-- Task name -->
-        e.g. Don't forget the cannolis!
-        </div><!-- End of task name -->
-        <div><!-- Start of task description -->
-        <div class="desc">
-            <textarea id=""></textarea>
-            </div>
-            </div><!-- End of task description -->
-        <div class="remind"><!-- Task time remainder -->
-        <input type="date">
-            <!--<button type="submit">Submit</button>-->
-            </div><!-- End of task time remainder -->
-        </div>
+        if (index == undefined || !task_list[index])
+            return;
+        var item = task_list[index];
+        console.log('item', item);
+        var tpl = '<div>'+
+        '<div class="content">'+
+        item.content+
+        '</div>'+
+        '<div>'+
+        '<div class="desc">'+
+            '<textarea value="' + item.desc +'"></textarea>'+
+            '</div>'+
+            '</div>'+
+        '<div class="remind">'+
+        '<input type="date">'+
+            '</div>'+
+        '</div>'
+
+        $task_detail.html(null);
+        $task_detail.html(tpl);
     }
 
     function hide_task_detail() {
