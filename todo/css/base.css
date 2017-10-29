@@ -38,7 +38,8 @@ h1 {
 input,
 .task-item,
 .task-detail-mask,
-.textarea,
+.task-detail,
+textarea,
 button {
     border-radius: 3px;
     padding: 10px;
@@ -149,11 +150,12 @@ button {
 
 .task-detail-mask
 {
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(30,30,30,.6);
+    /*background: rgba(30,30,30,.6);*/
 }
 
 .task-content

@@ -11,6 +11,10 @@
         , $task_detail = $('.task-detail')
         , $task_detail_mask = $('.task-detail-mask')
         , task_list = []
+        , current_index
+        , $update_form
+        , $task_detail_content
+        ,$task_detail_content_input
         ;
 
 
@@ -20,6 +24,7 @@
         task_list = store.get('task_list') || [];
         if (task_list.length)
             render_task_list();
+        //console.log('store.get(task_list)', store.get('task_list'));
     }
 
     $form_add_task.on('submit', on_add_task_form_submit)
@@ -102,17 +107,24 @@
             var $this = $(this);
             var $item = $this.parent().parent();
             var index = $item.data('index');
-            //console.log('index', index);
-            render_task_detail(index)
             show_task_detail(index)
         })
     }
 
+    /*check task detail.*/
     function show_task_detail(index) {
-        render_task_detail();
+        render_task_detail(index);
+        current_index = index;
         $task_detail.show();
         $task_detail_mask.show();
 
+    }
+
+    function update_task(index, data) {
+        if(!index || !task_list[index])
+            return;
+        task_list[index] = /*$.merge({},task_list[index], */data;
+        refresh_task_list();
     }
 
     /*render specific task's detail information.*/
@@ -120,23 +132,48 @@
         if (index == undefined || !task_list[index])
             return;
         var item = task_list[index];
-        console.log('item', item);
-        var tpl = '<div>'+
+        var tpl =
+        '<form>'+
         '<div class="content">'+
         item.content+
         '</div>'+
+        '<div>' +
+        '<input style="display: none;" type="text" name="content" value="' +item.content+ '">' +
+        '</div>'+
         '<div>'+
         '<div class="desc">'+
-            '<textarea value="' + item.desc +'"></textarea>'+
-            '</div>'+
-            '</div>'+
+        '<textarea name="desc">'+item.desc+'</textarea>'+
+        '</div>'+
+        '</div>'+
         '<div class="remind">'+
-        '<input type="date">'+
-            '</div>'+
-        '</div>'
+        '<input name="remind_date" type="date" value="'+ item.remind_date+ '">'+
+        '</div>'+
+            '<div><button type="submit">Submit</button></div>'+
+        '</form>'
 
         $task_detail.html(null);
         $task_detail.html(tpl);
+        $update_form = $task_detail.find('form');
+        //console.log('$update_form', $update_form)
+        $task_detail_content = $update_form.find('.content');
+        $task_detail_content_input = $update_form.find('[name=content]');
+        $task_detail_content.on('dblclick', function(){
+            $task_detail_content_input.show();
+            $task_detail_content.hide();
+        })
+
+        $update_form.on('submit', function(e)
+        {
+            e.preventDefault()
+            var data = {};
+            data.content = $(this).find('[name=content]').val();
+            data.desc = $(this).find('[name=desc]').val();
+            data.remind_date = $(this).find('[name=remind_date]').val();
+            //console.log('data', data)
+            update_task(index, data);
+            hide_task_detail();
+        })
+
     }
 
     function hide_task_detail() {
