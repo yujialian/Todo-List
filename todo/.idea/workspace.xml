@@ -21,7 +21,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
+            <state relative-caret-position="270">
               <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
               <folding />
             </state>
@@ -31,11 +31,11 @@
       <file leaf-file-name="base.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="97" column="9" lean-forward="true" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
+            <state relative-caret-position="85">
+              <caret line="110" column="36" lean-forward="false" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="36" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <marker date="1509374697000" expanded="true" signature="4090:4104" ph="..." />
+                <marker date="1509379404000" expanded="true" signature="4461:4475" ph="..." />
               </folding>
             </state>
           </provider>
@@ -65,10 +65,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>task_delete</find>
-      <find>show_task_detail</find>
       <find>task_list</find>
-      <find>border-radius</find>
       <find>push</find>
+      <find>new_task</find>
+      <find>show_task_detail</find>
+      <find>border-radius</find>
+      <find>listen_task_deta</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -264,12 +266,12 @@
       <workItem from="1505754750892" duration="1557000" />
       <workItem from="1507737257714" duration="24106000" />
       <workItem from="1508421893449" duration="16391000" />
-      <workItem from="1509125532302" duration="23438000" />
+      <workItem from="1509125532302" duration="26508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67478000" />
+    <option name="totallyTimeSpent" value="70548000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -327,7 +329,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1509374697000" expanded="true" signature="4090:4104" ph="..." />
+            <marker date="1509379404000" expanded="true" signature="4461:4475" ph="..." />
           </folding>
         </state>
       </provider>
@@ -354,7 +356,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1509374697000" expanded="true" signature="4090:4104" ph="..." />
+            <marker date="1509379404000" expanded="true" signature="4461:4475" ph="..." />
           </folding>
         </state>
       </provider>
@@ -477,14 +479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/base.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -493,13 +487,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="97" column="9" lean-forward="true" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
+        <state relative-caret-position="85">
+          <caret line="110" column="36" lean-forward="false" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1509374697000" expanded="true" signature="4090:4104" ph="..." />
+            <marker date="1509379404000" expanded="true" signature="4461:4475" ph="..." />
           </folding>
         </state>
       </provider>

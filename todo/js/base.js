@@ -102,29 +102,42 @@
         listen_task_detail();
     }
 
+    /*wait for the task event.*/
     function listen_task_detail()
     {
+        var index;
+        $('.task-item').on('dblclick', function()
+            {
+                index = $(this).data('index')
+                show_task_detail(index);
+            }
+        )
+
         $task_detail_trigger.on('click',function() {
             var $this = $(this);
             var $item = $this.parent().parent();
-            var index = $item.data('index');
+            index = $item.data('index');
             show_task_detail(index)
         })
     }
 
     /*check task detail.*/
     function show_task_detail(index) {
+        /*Generate template detail */
         render_task_detail(index);
         current_index = index;
+        /*Show task detail template.(Default as hide) */
         $task_detail.show();
+        /*Show task detail template mask.(Default as hide) */
         $task_detail_mask.show();
 
     }
 
+    /*Refresh task. */
     function update_task(index, data) {
         if(!index || !task_list[index])
             return;
-        task_list[index] = /*$.merge({},task_list[index], */data;
+        task_list[index] = data;
         refresh_task_list();
     }
 
@@ -152,11 +165,18 @@
             '<div class="input-item"><button type="submit">Submit</button></div>'+
         '</form>'
 
+        /*Clear task detail template.*/
         $task_detail.html(null);
+        /*update templates */
         $task_detail.html(tpl);
+        /*Select form element, because later we will use it listen submit event*/
         $update_form = $task_detail.find('form');
+        /*Select and show task detail. */
         $task_detail_content = $update_form.find('.content');
+        /*Select and show task input element. */
         $task_detail_content_input = $update_form.find('[name=content]');
+
+        /*Double click the content, show the input element, hide task.*/
         $task_detail_content.on('dblclick', function(){
             $task_detail_content_input.show();
             $task_detail_content.hide();
@@ -166,16 +186,17 @@
         {
             e.preventDefault()
             var data = {};
+            /*Get each input's value in the form.*/
             data.content = $(this).find('[name=content]').val();
             data.desc = $(this).find('[name=desc]').val();
             data.remind_date = $(this).find('[name=remind_date]').val();
-            //console.log('data', data)
             update_task(index, data);
             hide_task_detail();
         })
 
     }
 
+    /*hide task detail*/
     function hide_task_detail() {
         $task_detail.hide();
         $task_detail_mask.hide();
