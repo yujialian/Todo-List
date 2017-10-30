@@ -88,8 +88,11 @@ button {
     margin-right: 1%;
 }
 
-.add-task [type=submit] {
+[type=submit]
+{
     background: #46b1e4;
+}
+.add-task [type=submit] {
     width: 15%
 }
 .add-task[type=submit],
@@ -135,6 +138,10 @@ button {
     padding: 10px;
     bottom: 0;
     right: 0;
+    border-radius:3px 0 0 3px;
+    -webkit-box-shadow: 0 1px 2px 1px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 1px 2px 1px rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px 1px rgba(0,0,0,.1);
 }
 
 .task-detail .content
@@ -144,7 +151,7 @@ button {
     cursor: pointer;
 }
 
-.task-detail > * {
+.task-detail .input-item {
     margin-bottom: 10px;
 }
 

@@ -72,6 +72,7 @@
     }
 
     function add_task(new_task) {
+
         /*Push the new task into task list*/
         task_list.push(new_task);
         /*Update local sotorage*/
@@ -93,7 +94,7 @@
         $task_list.html('');
         for (var i = 0; i < task_list.length; i++) {
             var $task = render_task_item(task_list[i], i);
-            $task_list.append($task);
+            $task_list.prepend($task);
         }
         $task_delete_trigger = $('.action.delete');
         $task_detail_trigger = $('.action.detail');
@@ -137,24 +138,23 @@
         '<div class="content">'+
         item.content+
         '</div>'+
-        '<div>' +
-        '<input style="display: none;" type="text" name="content" value="' +item.content+ '">' +
+        '<div class="input-item">' +
+        '<input style="display: none;" type="text" name="content" value="' +(item.content || '')+ '">' +
         '</div>'+
         '<div>'+
-        '<div class="desc">'+
-        '<textarea name="desc">'+item.desc+'</textarea>'+
+        '<div class="desc input-item">'+
+        '<textarea name="desc">'+(item.desc || '')+'</textarea>'+
         '</div>'+
         '</div>'+
-        '<div class="remind">'+
+        '<div class="remind input-item">'+
         '<input name="remind_date" type="date" value="'+ item.remind_date+ '">'+
         '</div>'+
-            '<div><button type="submit">Submit</button></div>'+
+            '<div class="input-item"><button type="submit">Submit</button></div>'+
         '</form>'
 
         $task_detail.html(null);
         $task_detail.html(tpl);
         $update_form = $task_detail.find('form');
-        //console.log('$update_form', $update_form)
         $task_detail_content = $update_form.find('.content');
         $task_detail_content_input = $update_form.find('[name=content]');
         $task_detail_content.on('dblclick', function(){
