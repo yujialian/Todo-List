@@ -91,13 +91,22 @@
     function render_task_list() {
         var $task_list = $('.task-list');
         $task_list.html('');
+        var complete_items = [];
         for (var i = 0; i < task_list.length; i++) {
-            var $task = render_task_item(task_list[i], i);
+            var item = task_list[i];
+            if(item && item.complete)
+                complete_items.push(item)
+            else
+                var $task = render_task_item(item, i);
             $task_list.prepend($task);
+        }
+        for(var j = 0; j < complete_items.length; j++) {
+            var $task = render_task_item(complete_items[j], j);
+            $task_list.append($task);
         }
         $task_delete_trigger = $('.action.delete');
         $task_detail_trigger = $('.action.detail');
-        $checkbox_complete = $('.task-list .complete')
+        $checkbox_complete = $('.task-list .complete[type=checkbox]')
         listen_task_delete();
         listen_task_detail();
         listen_checkbox_complete();
@@ -134,15 +143,22 @@
 
     }
 
+    /*Listen finish task events.*/
     function listen_checkbox_complete() {
         $checkbox_complete.on('click', function () {
             var $this =$(this);
-            var is_complete = $this.is(':checked');
             var index = $this.parent().parent().data('index');
-            update_task(index, {complete: is_complete});
-
+            var item = get(index);
+            if(item.complete)
+                update_task(index, {complete: false});
+            else
+                update_task(index, {complete: true});
             })
 
+    }
+
+    function get(index) {
+        return store.get('task_list')[index];
     }
 
     /*Refresh task. */
@@ -153,7 +169,7 @@
         //JQuery's 'merge' is merge arrays, not merge objects, if we want to use merge object in JQUery, use extend method
         task_list[index] = $.extend({}, task_list[index], data);//old data:task_list[index], new data:data
         refresh_task_list();
-        console.log("task_list". task_list[index])
+        console.log("task_list", task_list[index])
     }
 
     /*render specific task's detail information.*/
@@ -223,7 +239,7 @@
         if (!data || !index) return;
         var list_item_tpl =
             '<div class="task-item" data-index="' + index + '">' +
-            '<span><input class="complete" type="checkbox"></span>' +
+            '<span><input class="complete" ' + (data.complete? 'checked' :'') + ' type="checkbox"></span>' +
             '<span class="task-content">' + data.content + '</span>' +
             '<span class="fr">' +
             '<span class="action delete"> Delete</span>' +
