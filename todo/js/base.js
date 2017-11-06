@@ -14,6 +14,7 @@
         , current_index
         , $update_form
         , $task_detail_content
+        ,$checkbox_complete
         ,$task_detail_content_input
         ;
 
@@ -24,11 +25,10 @@
         task_list = store.get('task_list') || [];
         if (task_list.length)
             render_task_list();
-        //console.log('store.get(task_list)', store.get('task_list'));
     }
 
-    $form_add_task.on('submit', on_add_task_form_submit)
-    $task_detail_mask.on('click', hide_task_detail)
+    $form_add_task.on('submit', on_add_task_form_submit);
+    $task_detail_mask.on('click', hide_task_detail);
 
     function on_add_task_form_submit(e) {
         var new_task = {}, $input;
@@ -50,7 +50,6 @@
     /*Looking and listening all the delete button events.*/
     function listen_task_delete()
     {
-        //console.log('$task_delete', $task_delete);
         $task_delete_trigger.on('click', function () {
             var $this = $(this);
             /*Find which event's delete button is been pushed*/
@@ -98,8 +97,10 @@
         }
         $task_delete_trigger = $('.action.delete');
         $task_detail_trigger = $('.action.detail');
+        $checkbox_complete = $('.task-list .complete')
         listen_task_delete();
         listen_task_detail();
+        listen_checkbox_complete();
     }
 
     /*wait for the task event.*/
@@ -133,12 +134,26 @@
 
     }
 
+    function listen_checkbox_complete() {
+        $checkbox_complete.on('click', function () {
+            var $this =$(this);
+            var is_complete = $this.is(':checked');
+            var index = $this.parent().parent().data('index');
+            update_task(index, {complete: is_complete});
+
+            })
+
+    }
+
     /*Refresh task. */
     function update_task(index, data) {
         if(!index || !task_list[index])
             return;
-        task_list[index] = data;
+        //{complete == true|false}
+        //JQuery's 'merge' is merge arrays, not merge objects, if we want to use merge object in JQUery, use extend method
+        task_list[index] = $.extend({}, task_list[index], data);//old data:task_list[index], new data:data
         refresh_task_list();
+        console.log("task_list". task_list[index])
     }
 
     /*render specific task's detail information.*/
@@ -208,7 +223,7 @@
         if (!data || !index) return;
         var list_item_tpl =
             '<div class="task-item" data-index="' + index + '">' +
-            '<span><input type="checkbox"></span>' +
+            '<span><input class="complete" type="checkbox"></span>' +
             '<span class="task-content">' + data.content + '</span>' +
             '<span class="fr">' +
             '<span class="action delete"> Delete</span>' +
