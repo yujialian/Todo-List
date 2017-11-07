@@ -95,13 +95,16 @@
         for (var i = 0; i < task_list.length; i++) {
             var item = task_list[i];
             if(item && item.complete)
-                complete_items.push(item)
+                complete_items[i] = item;
             else
                 var $task = render_task_item(item, i);
             $task_list.prepend($task);
         }
+
         for(var j = 0; j < complete_items.length; j++) {
             var $task = render_task_item(complete_items[j], j);
+            if(!$task) continue;
+            $task.addClass('completed');
             $task_list.append($task);
         }
         $task_delete_trigger = $('.action.delete');
