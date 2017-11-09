@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <title>My Todo App</title>
     <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="css/base.css">
 </head>
 <body>
+<div class="msg">
+    <span div class="msg-content"></span>
+    <span class="anchor confirmed">Warning! New task showing up!</span>
+</div>
 <div class="container"><!--Start of the main container-->
     <h1>My Todo List</h1>
     <form class="add-task">
@@ -40,8 +45,10 @@
     </div><!-- End of task detail -->
 
 </div><!--End of the main container-->
+<video class="alerter" src="alert.mp3"></video>
 <script src="node_modules/jquery/dist/jquery.js"></script>
-<script src="node_modules/store/store.js"></script>
+<script src="node_modules/storejs/dist/store.js"></script>
+<script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
 <script src="js/base.js"></script>
 </body>
 </html>
