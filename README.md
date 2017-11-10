@@ -10,7 +10,7 @@ Main interface:
 
 ![Todo List](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/d5/632948/d76fab34d67b5197898e42b493529438-original.jpeg)
 
-Deine task detail and remaind time
+Define task detail and remaind time
 
 ![Todo List](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/d5/632948/f0f2e52b963a02c836adf1f80b424653-original.jpeg)
 
